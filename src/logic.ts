@@ -107,13 +107,23 @@ export function move(gameState: GameState): MoveResponse {
         }
     }    
 
-    
-        
-
-
-
     // TODO: Step 4 - Find food.
     // Use information in gameState to seek out and find food.
+    const allFood = gameState.board.food
+    
+    for(var i = 0; i < allFood.length; i++) {
+        const food = allFood
+
+        var arr = new Array(allFood); 
+        var sorted = arr.sort(); 
+        console.log(allFood.sort);
+    }
+
+    
+    
+   
+    
+
 
     // Finally, choose a move from the available safe moves.
     // TODO: Step 5 - Select a move to make based on strategy, rather than random.
