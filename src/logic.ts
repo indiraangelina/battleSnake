@@ -1,4 +1,4 @@
-import { InfoResponse, GameState, MoveResponse, Game } from "./types"
+import { InfoResponse, GameState, MoveResponse, Game, Coord } from "./types"
 
 export function info(): InfoResponse {
     console.log("INFO")
@@ -69,8 +69,26 @@ export function move(gameState: GameState): MoveResponse {
     // TODO: Step 2 - Don't hit yourself.
     // Use information in gameState to prevent your Battlesnake from colliding with itself.
     const myBody = gameState.you.body
-    const myTail = gameState.you.length
+    const targetUp: Coord = {x: myHead.x , y: myHead.y +1 }
+    const targetDown: Coord = {x: myHead.x , y: myHead.y -1}
+    const targetLeft: Coord = {x: myHead.x -1 , y: myHead.y}
+    const targetRight: Coord = {x: myHead.x +1 , y: myHead.y}
 
+    if (myBody.some(coord => coord.x === targetUp.x && coord.y === targetUp.y)) {
+        possibleMoves.up = false
+    }
+
+    if (myBody.some(coord => coord.x === targetDown.x && coord.y === targetDown.y)) {
+        possibleMoves.down = false 
+    }
+    if (myBody.some(coord => coord.x === targetLeft.x && coord.y === targetLeft.y)) {
+        possibleMoves.left = false 
+    }
+    if (myBody.some(coord => coord.x === targetRight.x && coord.y === targetRight.y)) {
+        possibleMoves.right = false 
+    }
+
+    
     // TODO: Step 3 - Don't collide with others.
     // Use information in gameState to prevent your Battlesnake from colliding with others.
 
