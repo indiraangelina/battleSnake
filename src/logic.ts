@@ -46,32 +46,30 @@ export function move(gameState: GameState): MoveResponse {
     } else if (myNeck.y > myHead.y) {
         possibleMoves.up = false
     }
+    
+    // TODO: Step 1 - Don't hit walls.
+    // Use information in gameState to prevent your Battlesnake from moving beyond the boundaries of the board.
 
-    if (myHead.y > maxheight -1 ) {
+    if (myHead.y === (maxheight -1) ) {
         possibleMoves.up = false
     } 
 
-    if (myHead.y >= minheigth ) {
+    if (myHead.y === minheigth ) {
         possibleMoves.down = false 
     }
 
-    if (myHead.x >=minwidth ) {
+    if (myHead.x === minwidth ) {
         possibleMoves.left = false 
     }
 
-    if (myHead.x > maxheight -1) {
+    if (myHead.x === (maxwidth -1)) {
         possibleMoves.right = false 
     }
         
-
-    // TODO: Step 1 - Don't hit walls.
-    // Use information in gameState to prevent your Battlesnake from moving beyond the boundaries of the board.
-    // const boardWidth = gameState.board.width
-    // const boardHeight = gameState.board.height
-
     // TODO: Step 2 - Don't hit yourself.
     // Use information in gameState to prevent your Battlesnake from colliding with itself.
-    // const mybody = gameState.you.body
+    const myBody = gameState.you.body
+    const myTail = gameState.you.length
 
     // TODO: Step 3 - Don't collide with others.
     // Use information in gameState to prevent your Battlesnake from colliding with others.
