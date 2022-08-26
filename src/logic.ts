@@ -123,7 +123,7 @@ export function move(gameState: GameState): MoveResponse {
         if(distanceFromNewHeadToFood > distanceFromHeadToFood){
             possibleMoves[candidateMove] = false
         }
-        console.log(candidateMove)
+        console.log(possibleMoves)
     }
     const response: MoveResponse = {
         move: safeMoves[Math.floor(Math.random() * safeMoves.length)],
@@ -168,7 +168,6 @@ export function distanceToClosestFood(myHead: Coord, allFood: Coord[]): number {
     let minimum = undefined;
     for (var i = 0; i < allFood.length; i++) { 
         const food = allFood[i];
-        console.log(food)
         let foodDistance = distanceToFood(myHead , food);
         if (minimum === undefined || foodDistance < minimum) {
             minimum = foodDistance;
