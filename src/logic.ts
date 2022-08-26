@@ -121,7 +121,7 @@ export function move(gameState: GameState): MoveResponse {
         let distanceFromHeadToFood = distanceToClosestFood(myHead, allFood)
         let distanceFromNewHeadToFood = distanceToClosestFood(myNewHead, allFood)
         if(distanceFromNewHeadToFood > distanceFromHeadToFood){
-            //candidateMove
+            possibleMoves[candidateMove] = false
         }
         console.log(candidateMove)
     }
