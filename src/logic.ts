@@ -119,7 +119,7 @@ export function move(gameState: GameState): MoveResponse {
     let bestMove = undefined; 
     let bestDistance = undefined;
 
-    for (let candidateMove in safeMoves) {
+    for (let candidateMove of safeMoves) {
         const myNewHead = calculateNewHead(myHead, candidateMove);
         let distanceFromNewHeadToFood = distanceToClosestFood(myNewHead, allFood);
         console.log("checking Move: ", candidateMove);
