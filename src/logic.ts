@@ -118,8 +118,12 @@ export function move(gameState: GameState): MoveResponse {
     const safeMoves = Object.keys(possibleMoves).filter(key => possibleMoves[key]);
     for (let candidateMove in safeMoves) {
     const myNewHead = calculateNewHead(myHead, candidateMove);
-        let mySnakeToFood = distanceToClosestFood(myHead, allFood)
-        console.log(mySnakeToFood)
+        let distanceFromHeadToFood = distanceToClosestFood(myHead, allFood)
+        let distanceFromNewHeadToFood = distanceToClosestFood(myNewHead, allFood)
+        if(distanceFromNewHeadToFood > distanceFromHeadToFood){
+            //candidateMove
+        }
+        console.log(candidateMove)
     }
     const response: MoveResponse = {
         move: safeMoves[Math.floor(Math.random() * safeMoves.length)],
