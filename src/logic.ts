@@ -116,17 +116,21 @@ export function move(gameState: GameState): MoveResponse {
     }
     const closestFood = {};
     const safeMoves = Object.keys(possibleMoves).filter(key => possibleMoves[key]);
+    let bestMove = undefined; 
+    let bestDistance = undefined;
+
     for (let candidateMove in safeMoves) {
-    const myNewHead = calculateNewHead(myHead, candidateMove);
-        let distanceFromHeadToFood = distanceToClosestFood(myHead, allFood)
-        let distanceFromNewHeadToFood = distanceToClosestFood(myNewHead, allFood)
-        if(distanceFromNewHeadToFood > distanceFromHeadToFood){
-            possibleMoves[candidateMove] = false
+        const myNewHead = calculateNewHead(myHead, candidateMove);
+        let distanceFromNewHeadToFood = distanceToClosestFood(myNewHead, allFood);
+        if(bestDistance === undefined || bestDistance > distanceFromNewHeadToFood){
+            bestDistance = distanceFromNewHeadToFood;
+            bestMove = candidateMove;
         }
         console.log(possibleMoves)
     }
     const response: MoveResponse = {
-        move: safeMoves[Math.floor(Math.random() * safeMoves.length)],
+        move: bestMove as string 
+        
     }
 
     console.log(`${gameState.game.id} MOVE ${gameState.turn}: ${response.move}`)
